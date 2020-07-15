@@ -37,15 +37,13 @@ public class ServiceItemSQL {
 		return serItem;
 	}	
 	
-public ServiceItem insertServiceItem() throws SQLException {
+public ServiceItem insertServiceItem(ServiceItem serItem) throws SQLException {
 		
-	    ServiceItem  serItem = null;
 		Conn conn =new Conn();
 		Connection connection = conn.getConnection();
 		
 		if(connection !=null) {
 			PreparedStatement ps = null;
-			serItem = new ServiceItem ();
 			ps = connection.prepareStatement("INSERT INTO ServiceItem values (?,?,?)");
 			ps.setString(1,serItem.getServiceType());
 			ps.setByte(2,serItem.getItem());

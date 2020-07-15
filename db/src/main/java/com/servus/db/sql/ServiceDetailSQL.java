@@ -9,6 +9,7 @@ import com.servus.db.Conn;
 import com.servus.db.ServiceDetail;
 
 
+
 public class ServiceDetailSQL {
 
 	public ServiceDetail selectServiceDetail() throws SQLException {
@@ -34,15 +35,14 @@ public class ServiceDetailSQL {
 		return sd;
 	}
 	
-	public ServiceDetail insertServiceDetail() throws SQLException {
+	public ServiceDetail insertServiceDetail(ServiceDetail sd) throws SQLException {
 		
-		ServiceDetail sd = null;
+	
 		Conn conn =new Conn();
 		Connection connection = conn.getConnection();
 		
 		if(connection !=null) {
 			PreparedStatement ps = null;
-			sd =new ServiceDetail();
 			ps = connection.prepareStatement("INSERT INTO ServiceDetail values (?,?,?,?,?,?,?)");
 			ps.setInt(1,sd .getServiceId());
 			ps.setByte(2,sd .getItemId());

@@ -7,7 +7,7 @@ public class Reserve {
  
 	private int reserveId;
 	private String userId;
-	private String serviceId;
+	private int serviceId;
 	private Date reserveDate;
 	private Time reserveStart;
 	private Time reserveEnd;
@@ -17,7 +17,7 @@ public class Reserve {
 	public Reserve() {
 	}
 
-	public Reserve(int reserveId, String userId, String serviceId, Date reserveDate, Time reserveStart, Time reserveEnd,
+	public Reserve(int reserveId, String userId, int serviceId, Date reserveDate, Time reserveStart, Time reserveEnd,
 			String status, byte score) {
 		this.reserveId = reserveId;
 		this.userId = userId;
@@ -45,11 +45,11 @@ public class Reserve {
 		this.userId = userId;
 	}
 
-	public String getServiceId() {
+	public int getServiceId() {
 		return serviceId;
 	}
 
-	public void setServiceId(String serviceId) {
+	public void setServiceId(int serviceId) {
 		this.serviceId = serviceId;
 	}
 

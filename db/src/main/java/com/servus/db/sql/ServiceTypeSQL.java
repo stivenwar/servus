@@ -35,25 +35,25 @@ public ServiceType selectServiceType() throws SQLException {
 		return serType;
 	}	
 	
-public ServiceType insertServiceType() throws SQLException {
+public ServiceType insertServiceType(ServiceType st) throws SQLException {
 		
-	    ServiceType  serType = null;
+	  
 		Conn conn =new Conn();
 		Connection connection = conn.getConnection();
 		
 		if(connection !=null) {
 			PreparedStatement ps = null;
-			serType = new ServiceType();
+			st = new ServiceType();
 			ps = connection.prepareStatement("INSERT INTO ServiceType values (?,?,?)");
-			ps.setString(1,serType.getServiceType());
-			ps.setString(3,serType.getName());
+			ps.setString(1,st.getServiceType());
+			ps.setString(3,st.getName());
 			
 			ps.executeUpdate();
 			System.out.println("insert");
 				
 		}
 		
-		return serType;
+		return st;
 	}
 	
 	public void updateServiceType(String serviceType, String name) throws SQLException {

@@ -41,7 +41,7 @@ public class PersonSQL
 		return person;
 	}
 	
-	public Person insertPerson() throws SQLException {
+	public Person insertPerson(Person p) throws SQLException {
 		
 		Person person = null;
 		Conn conn =new Conn();
@@ -49,17 +49,16 @@ public class PersonSQL
 		
 		if(connection !=null) {
 			PreparedStatement ps = null;
-		    person =new Person();
 			ps = connection.prepareStatement("INSERT INTO Person values (?,?,?,?,?,?,?,?,?)");
-			ps.setString(1,person.getUserId());
-			ps.setString(2,person.getType());
-			ps.setString(3,person.getName());
-			ps.setString(4,person.getMobile());
-			ps.setString(5,person.getCountry());
-			ps.setString(6,person.getCity());
-			ps.setString(7,person.getAddress());
-			ps.setString(8,person.getMap());
-			ps.setDate(9,person.getBirthday());
+			ps.setString(1,p.getUserId());
+			ps.setString(2,p.getType());
+			ps.setString(3,p.getName());
+			ps.setString(4,p.getMobile());
+			ps.setString(5,p.getCountry());
+			ps.setString(6,p.getCity());
+			ps.setString(7,p.getAddress());
+			ps.setString(8,p.getMap());
+			ps.setDate(9,p.getBirthday());
 			ps.executeUpdate();
 			System.out.println("insert");
 				

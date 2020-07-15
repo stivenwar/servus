@@ -41,33 +41,31 @@ public Service selectService() throws SQLException {
 		return service;
 	}
 	
-	public Service insertService() throws SQLException {
+	public Service insertService(Service s) throws SQLException {
 		
-		Service service = null;
 		Conn conn =new Conn();
 		Connection connection = conn.getConnection();
 		
 		if(connection !=null) {
 			PreparedStatement ps = null;
-		    service = new Service();
 			ps = connection.prepareStatement("INSERT INTO Service values (?,?,?,?,?,?,?,?,?,?,?)");
-			ps.setInt(1,service.getServiceId());
-			ps.setString(2,service.getAdminId());
-			ps.setString(3,service.getServiceType());
-			ps.setString(4,service.getName());
-			ps.setString(5,service.getDescription());
-			ps.setString(6,service.getMobile());
-			ps.setString(7,service.getCountry());
-			ps.setString(8,service.getCity());
-			ps.setString(9,service.getAddress());
-			ps.setString(10,service.getMap());
-			ps.setBoolean(11,service.isAvailable());
+			ps.setInt(1,s.getServiceId());
+			ps.setString(2,s.getAdminId());
+			ps.setString(3,s.getServiceType());
+			ps.setString(4,s.getName());
+			ps.setString(5,s.getDescription());
+			ps.setString(6,s.getMobile());
+			ps.setString(7,s.getCountry());
+			ps.setString(8,s.getCity());
+			ps.setString(9,s.getAddress());
+			ps.setString(10,s.getMap());
+			ps.setBoolean(11,s.isAvailable());
 			ps.executeUpdate();
 			System.out.println("insert");
 				
 		}
 		
-		return service;
+		return s;
 	}
 	
 	public void updateService(int serviceId, String name, String description, String mobile,

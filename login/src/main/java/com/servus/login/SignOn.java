@@ -10,7 +10,7 @@ import com.servus.db.sql.LoginSQL;
 
 public class SignOn
 {
-    public static void main( String[] args )
+	public static void main( String[] args )
     {
     	
     	
@@ -18,7 +18,7 @@ public class SignOn
     	Gson gson = new Gson();
         LoginSQL loginSQL = new LoginSQL();
         String mail = "esteban@gmail.com";
-        String code = "12344";
+        String code = "sancochito69";
         Login user = null;
         Message message = new Message(mail,code);
     	Result resultOk = new Result("OK","Usuario encontrado",mail);
@@ -40,6 +40,7 @@ public class SignOn
         {
             System.out.println( gson.toJson(resultUser) );
         }
+        
         else if( !user.isActive() )
         {	
             System.out.println( gson.toJson(active) );
@@ -51,7 +52,7 @@ public class SignOn
         }
         else
         {
-            System.out.println( user.getUserId() );
+            System.out.println( gson.toJson(resultOk) );
         }
     }
 }

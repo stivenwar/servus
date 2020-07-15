@@ -102,6 +102,12 @@ public class Person {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+
+	@Override
+	public String toString() {
+		return "Person [userId=" + userId + ", type=" + type + ", name=" + name + ", mobile=" + mobile + ", country="
+				+ country + ", city=" + city + ", address=" + address + ", map=" + map + ", birthday=" + birthday + "]";
+	}
 	
 	
 	

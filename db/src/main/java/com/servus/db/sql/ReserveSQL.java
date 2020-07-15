@@ -25,7 +25,7 @@ public Reserve selectReserve() throws SQLException {
 			while(rs.next()){
 				reserve = new Reserve();
 				reserve.setReserveId(rs.getInt("reserveId"));
-				reserve.setServiceId(rs.getString("serviceId"));
+				reserve.setServiceId(rs.getInt("serviceId"));
 				reserve.setUserId(rs.getString("userId"));
 				reserve.setReserveDate(rs.getDate("reserveDate"));
 				reserve.setReserveStart(rs.getTime("reserveStart"));
@@ -39,30 +39,28 @@ public Reserve selectReserve() throws SQLException {
 		return reserve;
 	}
 	
-	public Reserve insertReserve() throws SQLException {
+	public Reserve insertReserve(Reserve r) throws SQLException {
 		
-		Reserve reserve = null;
 		Conn conn =new Conn();
 		Connection connection = conn.getConnection();
 		
 		if(connection !=null) {
 			PreparedStatement ps = null;
-			reserve =new Reserve();
 			ps = connection.prepareStatement("INSERT INTO reserve values (?,?,?,?,?,?,?,?)");
-			ps.setInt(1,reserve.getReserveId());
-			ps.setString(2,reserve.getUserId());
-			ps.setString(3,reserve.getServiceId());
-			ps.setDate(4,reserve.getReserveDate());
-			ps.setTime(5,reserve.getReserveStart());
-			ps.setTime(6,reserve.getReserveEnd());
-			ps.setString(7,reserve.getStatus());
-			ps.setByte(8,reserve.getScore());
+			ps.setInt(1,r.getReserveId());
+			ps.setString(2,r.getUserId());
+			ps.setInt(3,r.getServiceId());
+			ps.setDate(4,r.getReserveDate());
+			ps.setTime(5,r.getReserveStart());
+			ps.setTime(6,r.getReserveEnd());
+			ps.setString(7,r.getStatus());
+			ps.setByte(8,r.getScore());
 			ps.executeUpdate();
 			System.out.println("insert");
 				
 		}
 		
-		return reserve;
+		return r;
 	}
 	
 	public Reserve updateReserve(Date reserveDate, Time reserveStart, Time reserveEnd, String status, Byte score) throws SQLException {
